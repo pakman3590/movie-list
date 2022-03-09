@@ -1,7 +1,7 @@
 import React from 'react';
 import List from './List.jsx';
 import Search from './Search.jsx';
-
+import Movies from '/client/src/data/Movies.js';
 
 // receives movies prop as array of movie objects
 
@@ -19,24 +19,22 @@ class App extends React.Component {
 
   handleClick(newMovies) {
     // if array is filled
-    console.log(`newMovies:`)
-    console.log(newMovies)
     if (newMovies.length > 0) {
       // change movies state to new array
       this.setState({ currMovies: newMovies });
-      console.log('movies refreshed')
-      console.log(this.state.currMovies)
     } else {
       // else alert no movies found
       alert('No movies found!');
+      this.setState({ currMovies: Movies })
+
     }
   }
 
   render() {
     return (
       <div>
-        <Search handleClick={this.handleClick} movies={this.state.currMovies}/>
-        <List movies={this.props.movies} />
+        <Search handleClick={this.handleClick} movies={Movies}/>
+        <List movies={this.state.currMovies} />
       </div>
 
     )
