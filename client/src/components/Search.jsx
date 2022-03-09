@@ -20,7 +20,7 @@ class Search extends React.Component {
       <div id='searchBar'>
         <input id='search' type='text' placeholder='Search' onChange={this.handleChange}></input>
         <button className='subtmitButton' onClick={() => {
-          this.props.handleClick(searchMovies(this.state.searchText, this.props.movies))
+          this.props.handleClick(searchMovies(this.state.searchText, this.props.movies));
         }}>Search</button>
       </div>
     )
