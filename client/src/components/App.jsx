@@ -17,20 +17,22 @@ class App extends React.Component {
 
     this.handleNewMovie = this.handleNewMovie.bind(this);
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+    this.updateWatchedMovies = this.updateWatchedMovies.bind(this);
+    this.titleChecker = this.titleChecker.bind(this);
   }
 
-  handleNewMovie(movieTitle, database) {
-    console.log('MOVIE CHECKER')
-
-    // movie checker function
-    const titleChecker = (title, database) => {
-      for (let movie of database) {
-        if (title === movie.title) {
-          return true;
-        }
+  titleChecker(title, database) {
+    for (let movie of database) {
+      if (title === movie.title) {
+        return true;
       }
-      return false;
     }
+    return false;
+  }
+
+
+  handleNewMovie(movieTitle, database) {
+    // movie checker function
     // make sure movie database doesn't already have movie title
     if (!titleChecker(movieTitle, database)) {
       // add new movie to movie database
@@ -52,8 +54,13 @@ class App extends React.Component {
       // else alert no movies found
       alert('No movies found!');
       this.setState({ currMovies: Movies })
-
     }
+  }
+
+  // watched movie updater
+  updateWatchedMovies(title, watchedState) {
+    // if watchedstate is true
+      // check if
   }
 
   render() {
