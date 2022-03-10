@@ -2,6 +2,7 @@ import React from 'react';
 import List from './List.jsx';
 import Search from './Search.jsx';
 import Movies from '/client/src/data/Movies.js';
+import AddMovie from './AddMovie.jsx';
 
 // receives movies prop as array of movie objects
 
@@ -14,10 +15,10 @@ class App extends React.Component {
       test: 1
     };
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
   }
 
-  handleClick(newMovies) {
+  handleSearchSubmit(newMovies) {
     // if array is filled
     if (newMovies.length > 0) {
       // change movies state to new array
@@ -33,7 +34,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Search handleClick={this.handleClick} movies={Movies}/>
+        <AddMovie />
+        <Search handleSearchSubmit={this.handleSearchSubmit} movies={Movies}/>
         <List movies={this.state.currMovies} />
       </div>
 
