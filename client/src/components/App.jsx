@@ -11,14 +11,17 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      currMovies: this.props.movies,
+      currMovies: Movies,
       test: 1
     };
 
+    this.handleNewMovie = this.handleNewMovie.bind(this);
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
   }
 
   handleNewMovie(movieTitle, database) {
+    console.log('MOVIE CHECKER')
+
     // movie checker function
     const titleChecker = (title, database) => {
       for (let movie of database) {
@@ -32,11 +35,13 @@ class App extends React.Component {
     if (!titleChecker(movieTitle, database)) {
       // add new movie to movie database
       Movies.push({ title: movieTitle });
+      // update current movie state
+      this.setState({ currMovies: Movies })
     } else {
       // if movie exists, give alert
       alert('Movie already exists in database!')
     }
-  },
+  }
 
   handleSearchSubmit(newMovies) {
     // if array is filled
@@ -49,12 +54,12 @@ class App extends React.Component {
       this.setState({ currMovies: Movies })
 
     }
-  },
+  }
 
   render() {
     return (
       <div>
-        <AddMovie />
+        <AddMovie handleNewMovie={this.handleNewMovie} movies={Movies} />
         <Search handleSearchSubmit={this.handleSearchSubmit} movies={Movies}/>
         <List movies={this.state.currMovies} />
       </div>

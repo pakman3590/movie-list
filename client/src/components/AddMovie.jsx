@@ -19,7 +19,7 @@ class AddMovie extends React.Component {
     return (
       <div id='addMovie'>
         <input id='newMovieInput' type='text' onChange={this.handleChange} placeholder='Add Movie Title Here'></input>
-        <button id='newMovieSubmit'>Add</button>
+        <button id='newMovieSubmit' onClick={() => this.props.handleNewMovie(this.state.titleText, this.props.movies)}>Add</button>
       </div>
     )
   }
