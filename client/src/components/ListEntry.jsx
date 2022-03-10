@@ -4,12 +4,18 @@ import React from 'react';
 class ListEntry extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      watched: false
+    }
   }
 
   //receives movie prop as string title of movie
   render() {
     return (
-      <li className='listEntry'>{this.props.movie}</li>
+      <li className='listEntry'>{this.props.movie}
+        <button className='watchedButton'>Watched</button>
+      </li>
     )
   }
 }
