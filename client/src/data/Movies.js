@@ -6,4 +6,6 @@ const Movies = [
   {title: 'Ex Machina'},
 ];
 
-export default Movies
+const Watched = [];
+
+export { Movies, Watched }

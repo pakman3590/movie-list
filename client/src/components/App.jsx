@@ -1,7 +1,7 @@
 import React from 'react';
 import List from './List.jsx';
 import Search from './Search.jsx';
-import Movies from '/client/src/data/Movies.js';
+import { Movies, Watched} from '/client/src/data/Movies.js';
 import AddMovie from './AddMovie.jsx';
 
 // receives movies prop as array of movie objects
