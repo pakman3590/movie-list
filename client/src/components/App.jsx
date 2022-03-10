@@ -18,6 +18,26 @@ class App extends React.Component {
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
   }
 
+  handleNewMovie(movieTitle, database) {
+    // movie checker function
+    const titleChecker = (title, database) => {
+      for (let movie of database) {
+        if (title === movie.title) {
+          return true;
+        }
+      }
+      return false;
+    }
+    // make sure movie database doesn't already have movie title
+    if (!titleChecker(movieTitle, database)) {
+      // add new movie to movie database
+      Movies.push({ title: movieTitle });
+    } else {
+      // if movie exists, give alert
+      alert('Movie already exists in database!')
+    }
+  },
+
   handleSearchSubmit(newMovies) {
     // if array is filled
     if (newMovies.length > 0) {
@@ -29,7 +49,7 @@ class App extends React.Component {
       this.setState({ currMovies: Movies })
 
     }
-  }
+  },
 
   render() {
     return (
